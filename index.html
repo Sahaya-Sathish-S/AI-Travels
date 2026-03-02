@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SafeTN - AI Public Transport Safety</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            color: white;
+        }
+
+        header {
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            color: #00ffd5;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 25px;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: #00ffd5;
+        }
+
+        .hero {
+            height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h2 {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            max-width: 800px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            background: #00ffd5;
+            color: black;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 70px 50px;
+            text-align: center;
+        }
+
+        .section h3 {
+            margin-bottom: 40px;
+            font-size: 32px;
+            color: #00ffd5;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.1);
+            padding: 25px;
+            border-radius: 15px;
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            background: rgba(0,255,213,0.2);
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>SafeTN</h1>
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Features</a>
+        <a href="#">Analytics</a>
+        <a href="#">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h2>AI Powered Public Transport Safety Platform</h2>
+    <p>
+        SafeTN is a smart digital safety monitoring platform focused on Tamil Nadu Public Transport,
+        with primary focus on Coimbatore city. It integrates AI monitoring, live location tracking,
+        safety analytics, emergency reporting, and transport database management.
+    </p>
+    <a href="#" class="btn">View Project Proposal</a>
+</section>
+
+<section class="section">
+    <h3>Core Features</h3>
+    <div class="features">
+
+        <div class="card">
+            <h4>📍 Live Bus & Train Tracking</h4>
+            <p>Real-time GPS tracking of buses and trains across Tamil Nadu.</p>
+        </div>
+
+        <div class="card">
+            <h4>🚨 Emergency Reporting</h4>
+            <p>One-click safety alert system with location sharing.</p>
+        </div>
+
+        <div class="card">
+            <h4>🎥 AI Camera Monitoring</h4>
+            <p>Future AI integration for behavior detection & safety monitoring.</p>
+        </div>
+
+        <div class="card">
+            <h4>📊 Data Analytics Dashboard</h4>
+            <p>Safety score analysis and risk-based transport insights.</p>
+        </div>
+
+        <div class="card">
+            <h4>📝 Complaint Management</h4>
+            <p>Digital complaint filing with tracking and resolution system.</p>
+        </div>
+
+        <div class="card">
+            <h4>👮 Admin Control Panel</h4>
+            <p>Transport authority dashboard for monitoring and decision-making.</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="section">
+    <h3>Technology Stack (Planned)</h3>
+    <p>
+        Frontend: HTML, CSS, JavaScript / React <br><br>
+        Backend: Node.js / Python Flask <br><br>
+        Database: MySQL / MongoDB <br><br>
+        AI/ML: Deep Learning, Computer Vision, Data Analytics <br><br>
+        Cloud Hosting: AWS / Render / Firebase
+    </p>
+</section>
+
+<footer>
+    © 2026 SafeTN | AI Powered Transport Safety System | Developed by Sathish
+</footer>
+
+</body>
+</html>
