@@ -1,187 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>SafeTN - AI Public Transport Safety</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeTN - AI Transport Security</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
 
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Poppins', sans-serif;
-        }
+<style>
 
-        body {
-            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-            color: white;
-        }
+/* ===== GLOBAL ===== */
 
-        header {
-            padding: 20px 50px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-        header h1 {
-            color: #00ffd5;
-        }
+body{
+background:#0a0a0a;
+color:white;
+overflow-x:hidden;
+}
 
-        nav a {
-            color: white;
-            margin-left: 25px;
-            text-decoration: none;
-            font-weight: 500;
-        }
+/* GOLD ANIMATION BACKGROUND */
 
-        nav a:hover {
-            color: #00ffd5;
-        }
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background: radial-gradient(circle at 20% 20%, rgba(255,215,0,0.1), transparent 40%),
+radial-gradient(circle at 80% 80%, rgba(255,215,0,0.08), transparent 40%);
+animation: moveBg 10s linear infinite alternate;
+z-index:-1;
+}
 
-        .hero {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+100%{transform:translate(-10%, -10%);}
+}
 
-        .hero h2 {
-            font-size: 45px;
-            margin-bottom: 20px;
-        }
+/* ===== NAVBAR ===== */
 
-        .hero p {
-            font-size: 18px;
-            max-width: 800px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 30px;
+background:rgba(0,0,0,0.6);
+backdrop-filter:blur(10px);
+position:sticky;
+top:0;
+z-index:100;
+border-bottom:1px solid rgba(255,215,0,0.3);
+}
 
-        .btn {
-            padding: 12px 25px;
-            background: #00ffd5;
-            color: black;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: bold;
-        }
+.logo{
+font-size:22px;
+font-weight:900;
+color:gold;
+text-shadow:0 0 10px gold;
+}
 
-        .section {
-            padding: 70px 50px;
-            text-align: center;
-        }
+nav a{
+color:white;
+text-decoration:none;
+margin-left:20px;
+font-size:14px;
+transition:0.3s;
+cursor:pointer;
+}
 
-        .section h3 {
-            margin-bottom: 40px;
-            font-size: 32px;
-            color: #00ffd5;
-        }
+nav a:hover{
+color:gold;
+}
 
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-        }
+/* ===== HERO ===== */
 
-        .card {
-            background: rgba(255,255,255,0.1);
-            padding: 25px;
-            border-radius: 15px;
-            transition: 0.3s;
-        }
+.hero{
+padding:80px 20px 60px;
+text-align:center;
+}
 
-        .card:hover {
-            transform: scale(1.05);
-            background: rgba(0,255,213,0.2);
-        }
+.hero h1{
+font-size:32px;
+font-weight:900;
+color:gold;
+margin-bottom:15px;
+}
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            background: rgba(0,0,0,0.4);
-        }
-    </style>
+.hero p{
+font-size:15px;
+max-width:600px;
+margin:auto;
+opacity:0.8;
+margin-bottom:30px;
+}
+
+.btn{
+padding:12px 28px;
+border-radius:40px;
+background:linear-gradient(45deg,#ffd700,#ffae00);
+color:black;
+font-weight:700;
+text-decoration:none;
+margin:5px;
+display:inline-block;
+transition:0.3s;
+border:none;
+cursor:pointer;
+}
+
+.btn:hover{
+transform:scale(1.1);
+}
+
+/* ===== SIDEBAR ===== */
+
+.sidebar{
+position:fixed;
+left:0;
+top:0;
+height:100%;
+width:70px;
+background:rgba(255,215,0,0.05);
+display:flex;
+flex-direction:column;
+align-items:center;
+padding-top:100px;
+border-right:1px solid rgba(255,215,0,0.3);
+}
+
+.sidebar i{
+color:gold;
+margin:25px 0;
+font-size:18px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.sidebar i:hover{
+transform:scale(1.2);
+}
+
+/* ===== SECTIONS ===== */
+
+.section{
+padding:60px 20px;
+text-align:center;
+}
+
+.section h2{
+color:gold;
+margin-bottom:40px;
+}
+
+.features{
+display:grid;
+grid-template-columns:1fr;
+gap:20px;
+}
+
+.card{
+background:rgba(255,215,0,0.05);
+padding:25px;
+border-radius:20px;
+transition:0.4s;
+border:1px solid rgba(255,215,0,0.2);
+}
+
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px gold;
+}
+
+.card i{
+font-size:25px;
+color:gold;
+margin-bottom:15px;
+}
+
+input{
+padding:10px;
+border-radius:10px;
+border:none;
+margin:5px;
+}
+
+footer{
+text-align:center;
+padding:20px;
+font-size:13px;
+background:rgba(0,0,0,0.6);
+border-top:1px solid rgba(255,215,0,0.3);
+margin-top:50px;
+}
+
+</style>
 </head>
+
 <body>
 
+<!-- SIDEBAR -->
+<div class="sidebar">
+<i class="fas fa-home" onclick="scrollToTop()"></i>
+<i class="fas fa-map-location-dot" onclick="showAlert('Live GPS Activated')"></i>
+<i class="fas fa-shield-halved" onclick="showAlert('Security Mode Enabled')"></i>
+<i class="fas fa-chart-line" onclick="showDashboard()"></i>
+<i class="fas fa-user-shield" onclick="showLogin()"></i>
+</div>
+
+<!-- HEADER -->
 <header>
-    <h1>SafeTN</h1>
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Features</a>
-        <a href="#">Analytics</a>
-        <a href="#">Login</a>
-    </nav>
+<div class="logo">SafeTN</div>
+<nav>
+<a onclick="scrollToTop()">Home</a>
+<a onclick="scrollToFeatures()">Features</a>
+<a onclick="showDashboard()">Dashboard</a>
+<a onclick="showLogin()">Login</a>
+</nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
-    <h2>AI Powered Public Transport Safety Platform</h2>
-    <p>
-        SafeTN is a smart digital safety monitoring platform focused on Tamil Nadu Public Transport,
-        with primary focus on Coimbatore city. It integrates AI monitoring, live location tracking,
-        safety analytics, emergency reporting, and transport database management.
-    </p>
-    <a href="#" class="btn">View Project Proposal</a>
+<h1>AI Powered Public Transport Security</h1>
+<p>
+Real-time GPS tracking, AI risk detection, emergency alerts and smart analytics platform for next-generation transport safety.
+</p>
+
+<button class="btn" onclick="scrollToFeatures()">Explore Platform</button>
+<button class="btn" onclick="showDashboard()">View Demo</button>
 </section>
 
-<section class="section">
-    <h3>Core Features</h3>
-    <div class="features">
+<!-- FEATURES -->
+<section class="section" id="featuresSection">
+<h2>Platform Highlights</h2>
 
-        <div class="card">
-            <h4>📍 Live Bus & Train Tracking</h4>
-            <p>Real-time GPS tracking of buses and trains across Tamil Nadu.</p>
-        </div>
+<div class="features">
 
-        <div class="card">
-            <h4>🚨 Emergency Reporting</h4>
-            <p>One-click safety alert system with location sharing.</p>
-        </div>
+<div class="card">
+<i class="fas fa-location-dot"></i>
+<h3>Live GPS Monitoring</h3>
+<p>Track buses and trains in real-time with ETA prediction.</p>
+</div>
 
-        <div class="card">
-            <h4>🎥 AI Camera Monitoring</h4>
-            <p>Future AI integration for behavior detection & safety monitoring.</p>
-        </div>
+<div class="card">
+<i class="fas fa-triangle-exclamation"></i>
+<h3>Emergency SOS</h3>
+<p>One-touch alert system with authority notification.</p>
+</div>
 
-        <div class="card">
-            <h4>📊 Data Analytics Dashboard</h4>
-            <p>Safety score analysis and risk-based transport insights.</p>
-        </div>
+<div class="card">
+<i class="fas fa-video"></i>
+<h3>AI Camera Detection</h3>
+<p>Detect abnormal activity using AI simulation.</p>
+</div>
 
-        <div class="card">
-            <h4>📝 Complaint Management</h4>
-            <p>Digital complaint filing with tracking and resolution system.</p>
-        </div>
+<div class="card">
+<i class="fas fa-chart-simple"></i>
+<h3>Safety Analytics</h3>
+<p>Risk scoring and predictive transport insights.</p>
+</div>
 
-        <div class="card">
-            <h4>👮 Admin Control Panel</h4>
-            <p>Transport authority dashboard for monitoring and decision-making.</p>
-        </div>
-
-    </div>
+</div>
 </section>
 
-<section class="section">
-    <h3>Technology Stack (Planned)</h3>
-    <p>
-        Frontend: HTML, CSS, JavaScript / React <br><br>
-        Backend: Node.js / Python Flask <br><br>
-        Database: MySQL / MongoDB <br><br>
-        AI/ML: Deep Learning, Computer Vision, Data Analytics <br><br>
-        Cloud Hosting: AWS / Render / Firebase
-    </p>
+<!-- DASHBOARD -->
+<section class="section" id="dashboardSection" style="display:none;">
+<h2>Live Safety Dashboard</h2>
+
+<div class="card">
+<h3>Enter Vehicle Details</h3>
+<input type="text" id="vehicleNumber" placeholder="Vehicle Number">
+<input type="text" id="driverName" placeholder="Driver Name">
+<br><br>
+<button class="btn" onclick="generateStatus()">Check Safety Status</button>
+
+<p id="statusResult" style="margin-top:20px;font-weight:bold;"></p>
+</div>
 </section>
 
+<!-- LOGIN BOX -->
+<div id="loginBox" style="display:none; position:fixed; top:30%; left:50%; transform:translate(-50%,-50%);
+background:black; padding:30px; border-radius:20px; border:1px solid gold; box-shadow:0 0 20px gold; z-index:200;">
+
+<h3 style="color:gold;">Login</h3>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<br><br>
+<button class="btn" onclick="login()">Login</button>
+<button class="btn" onclick="closeLogin()">Close</button>
+
+<p id="loginMessage"></p>
+</div>
+
+<!-- FOOTER -->
 <footer>
-    © 2026 SafeTN | AI Powered Transport Safety System | Developed by Sathish
+© 2026 SafeTN | Intelligent Transport Security Platform <br>
+Designed & Developed by Quantum Hackers 🚀
 </footer>
+
+<!-- JAVASCRIPT -->
+<script>
+
+// SCROLL FUNCTIONS
+function scrollToTop(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function scrollToFeatures(){
+document.getElementById("featuresSection").scrollIntoView({behavior:'smooth'});
+}
+
+// SHOW DASHBOARD
+function showDashboard(){
+document.getElementById("dashboardSection").style.display="block";
+document.getElementById("dashboardSection").scrollIntoView({behavior:'smooth'});
+}
+
+// ALERT FUNCTION
+function showAlert(message){
+alert(message);
+}
+
+// LOGIN FUNCTIONS
+function showLogin(){
+document.getElementById("loginBox").style.display="block";
+}
+
+function closeLogin(){
+document.getElementById("loginBox").style.display="none";
+}
+
+function login(){
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user==="admin" && pass==="1234"){
+document.getElementById("loginMessage").innerHTML="✅ Login Successful!";
+document.getElementById("loginMessage").style.color="lightgreen";
+}
+else{
+document.getElementById("loginMessage").innerHTML="❌ Invalid Credentials";
+document.getElementById("loginMessage").style.color="red";
+}
+}
+
+// SAFETY STATUS SIMULATION
+function generateStatus(){
+let vehicle=document.getElementById("vehicleNumber").value;
+let driver=document.getElementById("driverName").value;
+
+if(vehicle==="" || driver===""){
+alert("Please enter all details");
+return;
+}
+
+let random=Math.random();
+
+if(random<0.5){
+document.getElementById("statusResult").innerHTML=
+"🟢 Vehicle "+vehicle+" is SAFE. Driver: "+driver;
+document.getElementById("statusResult").style.color="lightgreen";
+}
+else{
+document.getElementById("statusResult").innerHTML=
+"🔴 Risk Detected in "+vehicle+"! Alert Sent.";
+document.getElementById("statusResult").style.color="red";
+}
+}
+
+</script>
 
 </body>
 </html>
