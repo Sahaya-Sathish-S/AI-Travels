@@ -3,100 +3,231 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SafeTN AI Security Dashboard</title>
+<title>SafeTN - AI Live Transport Security</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
 
-body{
-font-family:Poppins,sans-serif;
-background:#000;
-color:white;
+/* GLOBAL */
+
+*{
 margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:#050505;
+color:white;
+overflow-x:hidden;
 text-align:center;
 }
 
-h1{
-color:#ffd700;
-font-size:32px;
-margin-top:30px;
-text-shadow:0 0 15px #ffd700;
+/* Animated Gold Background */
+
+body::before{
+content:"";
+position:fixed;
+width:200%;
+height:200%;
+background:
+radial-gradient(circle at 20% 30%, rgba(255,215,0,0.12), transparent 40%),
+radial-gradient(circle at 80% 70%, rgba(255,215,0,0.08), transparent 40%);
+animation: moveBg 12s linear infinite alternate;
+z-index:-1;
 }
+
+@keyframes moveBg{
+0%{transform:translate(0,0);}
+100%{transform:translate(-8%,-8%);}
+}
+
+/* TITLE */
+
+h1{
+color:gold;
+margin-top:60px;
+font-size:34px;
+font-weight:900;
+text-shadow:0 0 20px gold;
+animation: glowTitle 2s infinite alternate;
+}
+
+@keyframes glowTitle{
+from{ text-shadow:0 0 10px gold; }
+to{ text-shadow:0 0 35px gold; }
+}
+
+/* CARD */
 
 .card{
 background:rgba(255,215,0,0.05);
-border:1px solid #ffd700;
-box-shadow:0 0 20px #ffd700;
+padding:45px;
+margin:60px auto;
+width:95%;
+max-width:600px;
 border-radius:20px;
-width:90%;
-max-width:500px;
-margin:40px auto;
-padding:30px;
+border:1px solid gold;
+backdrop-filter:blur(15px);
+box-shadow:0 0 25px rgba(255,215,0,0.3);
+transition:0.4s;
+animation:borderGlow 3s infinite alternate;
 }
 
-select,button{
+@keyframes borderGlow{
+from{ box-shadow:0 0 15px gold; }
+to{ box-shadow:0 0 40px gold; }
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+/* SECTION BOX */
+
+.section-box{
+margin:25px 0;
+padding:25px;
+border-radius:18px;
+background:rgba(255,215,0,0.04);
+border:1px solid gold;
+box-shadow:0 0 15px rgba(255,215,0,0.3);
+animation:boxPulse 4s infinite alternate;
+}
+
+@keyframes boxPulse{
+from{ box-shadow:0 0 10px rgba(255,215,0,0.3); }
+to{ box-shadow:0 0 25px gold; }
+}
+
+/* INPUT */
+
+select,input{
 padding:12px 20px;
 border-radius:30px;
-border:none;
-margin:10px;
-font-weight:bold;
+border:1px solid gold;
+background:black;
+color:gold;
+font-weight:600;
+margin-top:10px;
+width:250px;
+outline:none;
+transition:0.4s;
+box-shadow:0 0 20px rgba(255,215,0,0.4);
+animation:inputGlow 3s infinite alternate;
 }
 
-select{
-background:black;
-color:#ffd700;
-border:1px solid #ffd700;
+@keyframes inputGlow{
+from{ box-shadow:0 0 10px gold; }
+to{ box-shadow:0 0 25px gold; }
 }
+
+select:focus,input:focus{
+transform:scale(1.05);
+}
+
+/* BUTTON */
 
 button{
+padding:12px 30px;
+margin:15px 8px;
+border:none;
+border-radius:40px;
 background:linear-gradient(45deg,#ffd700,#ffae00);
+font-weight:bold;
 cursor:pointer;
+transition:0.4s;
+box-shadow:0 0 20px gold;
 }
 
-#emergencyBtn{
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 40px gold;
+}
+
+/* SOS BUTTON */
+
+#sosBtn{
 background:red;
 color:white;
-display:none;
 box-shadow:0 0 20px red;
+animation:sosPulse 1.2s infinite;
 }
 
-.status{
-margin-top:15px;
-font-size:18px;
+@keyframes sosPulse{
+0%{box-shadow:0 0 10px red;}
+50%{box-shadow:0 0 35px red;}
+100%{box-shadow:0 0 10px red;}
 }
 
-.green{color:lightgreen;}
-.yellow{color:yellow;}
-.red{color:red;}
+/* POLICE CALL BUTTON */
+
+.policeBtn{
+background:linear-gradient(45deg,#ff0000,#ff4d4d);
+color:white;
+box-shadow:0 0 20px red;
+animation:policeGlow 1.5s infinite alternate;
+}
+
+@keyframes policeGlow{
+from{ box-shadow:0 0 10px red; }
+to{ box-shadow:0 0 35px red; }
+}
+
+/* STATUS COLORS */
+
+.green{color:lightgreen;text-shadow:0 0 15px lightgreen;}
+.red{color:red;text-shadow:0 0 15px red;}
+.yellow{color:yellow;text-shadow:0 0 15px yellow;}
 
 </style>
 </head>
 
 <body>
 
-<h1>🚀 SafeTN AI Live Security</h1>
+<h1>🚀 SafeTN AI Live GPS Monitoring</h1>
 
 <div class="card">
 
-<h3>Select Vehicle Type</h3>
-
+<div class="section-box">
+<h3 style="color:gold;">Select Vehicle</h3>
 <select id="vehicle">
 <option value="bike">Bike</option>
 <option value="car">Car</option>
 <option value="bus">Bus</option>
 </select>
+</div>
 
-<p><b>📍 Area:</b> <span id="area">Waiting...</span></p>
+<div class="section-box">
+<p><b>📍 Area:</b> <span id="area">Waiting for GPS...</span></p>
 <p><b>Speed:</b> <span id="speed">0</span> km/h</p>
+</div>
 
-<p class="status">AI Risk: <span id="risk">Waiting...</span></p>
-<p class="status">AI Suggestion: <span id="suggestion">---</span></p>
+<div class="section-box">
+<p><b>AI Risk:</b> <span id="risk">Waiting...</span></p>
+<p><b>Vehicle:</b> <span id="vehicleType">Not Selected</span></p>
+<p><b>AI Suggestion:</b> <span id="suggestion">---</span></p>
+</div>
+
+<div class="section-box">
+<h3 style="color:red;">🚨 SOS Emergency</h3>
+<input type="text" id="phone" placeholder="Enter Phone Number">
+<br>
+<button id="sosBtn" onclick="sendSOS()">SEND SOS ALERT</button>
+
+<br><br>
+
+<!-- POLICE CALL OPTION -->
+<a href="tel:100">
+<button class="policeBtn">📞 CALL POLICE (100)</button>
+</a>
+
+</div>
 
 <button onclick="startRealGPS()">Start Live GPS</button>
 <button onclick="stopRealGPS()">Stop GPS</button>
-
-<button id="emergencyBtn" onclick="sendEmergency()">🚨 Emergency Alert</button>
 
 </div>
 
@@ -106,32 +237,19 @@ let watchId;
 let currentData = {};
 
 function startRealGPS(){
-
 if(navigator.geolocation){
-
 watchId = navigator.geolocation.watchPosition(function(position){
 
 let lat = position.coords.latitude;
 let long = position.coords.longitude;
 let speed = position.coords.speed || 0;
-
 speed = speed * 3.6;
+
 document.getElementById("speed").innerHTML = speed.toFixed(2);
 
 sendLocationToServer(lat,long,speed);
 
-},
-function(error){
-alert("GPS Error: " + error.message);
-},
-{
-enableHighAccuracy:true,
-maximumAge:0,
-timeout:5000
 });
-
-}else{
-alert("Geolocation not supported");
 }
 }
 
@@ -153,44 +271,55 @@ speed:speed,
 vehicle:vehicleType
 })
 })
-.then(response=>response.json())
+.then(res=>res.json())
 .then(data=>{
 
 document.getElementById("area").innerHTML = data.area;
 document.getElementById("risk").innerHTML = data.risk_score;
+document.getElementById("vehicleType").innerHTML = data.vehicle_type;
 document.getElementById("suggestion").innerHTML = data.suggestion;
 
-currentData = {
-vehicle: vehicleType,
-speed: speed.toFixed(2),
-area: data.area,
-risk: data.risk_score
+currentData={
+vehicle:data.vehicle_type,
+speed:document.getElementById("speed").innerHTML,
+area:data.area,
+risk:data.risk_score
 };
 
 if(data.risk_score.includes("HIGH")){
 document.getElementById("risk").className="red";
-document.getElementById("emergencyBtn").style.display="inline-block";
 }
 else if(data.risk_score.includes("MEDIUM")){
 document.getElementById("risk").className="yellow";
-document.getElementById("emergencyBtn").style.display="none";
 }
 else{
 document.getElementById("risk").className="green";
-document.getElementById("emergencyBtn").style.display="none";
 }
 
 });
 }
 
-function sendEmergency(){
+function sendSOS(){
+
+let phone=document.getElementById("phone").value;
+
+if(phone===""){
+alert("Please enter phone number");
+return;
+}
 
 fetch("/emergency",{
 method:"POST",
 headers:{"Content-Type":"application/json"},
-body:JSON.stringify(currentData)
+body:JSON.stringify({
+phone:phone,
+vehicle:currentData.vehicle,
+speed:currentData.speed,
+area:currentData.area,
+risk:currentData.risk
 })
-.then(response=>response.json())
+})
+.then(res=>res.json())
 .then(data=>{
 alert(data.message);
 });

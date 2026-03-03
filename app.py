@@ -5,6 +5,9 @@ app = Flask(__name__)
 
 @app.route("/")
 def home():
+    return render_template("home.html")
+@app.route("/location-page")
+def location_page():
     return render_template("index.html")
 
 @app.route("/location", methods=["POST"])
@@ -62,18 +65,22 @@ def receive_location():
 def emergency_alert():
 
     data = request.json
+
     report = f"""
-    🚨 SAFE TN EMERGENCY REPORT 🚨
+    🚨 SAFE TN SOS EMERGENCY ALERT 🚨
+    ----------------------------------
+    Phone Number: {data.get("phone")}
     Vehicle: {data.get("vehicle")}
     Speed: {data.get("speed")} km/h
     Area: {data.get("area")}
     Risk: {data.get("risk")}
+    ----------------------------------
     """
 
-    print(report)  # Here you can later integrate SMS or Police API
+    print(report)
 
     return jsonify({
-        "message": "🚨 Emergency Alert Sent to Control Room!"
+        "message": "🚨 SOS Alert Sent Successfully! Authorities Notified."
     })
 
 if __name__ == "__main__":

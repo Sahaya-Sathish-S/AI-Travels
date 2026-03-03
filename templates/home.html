@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SafeTN | AI Transport Security Platform</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+
+<style>
+
+/* ================= GLOBAL ================= */
+
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+<i class="fas fa-home" onclick="scrollToTop()"></i>
+<i class="fas fa-map-location-dot" onclick="window.location.href='/location-page'"></i>
+<i class="fas fa-shield-halved" onclick="alert('Security Mode Enabled')"></i>
+<i class="fas fa-chart-line" onclick="showDashboard()"></i>
+<i class="fas fa-user-shield" onclick="showLogin()"></i>
+</div>
+
+<header>
+<div class="logo">SafeTN</div>
+<nav>
+<a onclick="scrollToTop()">Home</a>
+<a onclick="scrollToFeatures()">Features</a>
+<a onclick="showDashboard()">Dashboard</a>
+<a onclick="showLogin()">Login</a>
+</nav>
+</header>
+
+<section class="hero">
+<h1>AI Powered Transport Security Platform</h1>
+<p>
+Real-time monitoring, AI-based vehicle risk detection, intelligent suggestions and next-gen safety analytics system.
+</p>
+<button class="btn" onclick="scrollToFeatures()">Explore</button>
+<button class="btn" onclick="showDashboard()">Open Dashboard</button>
+</section>
+
+<section class="section" id="featuresSection">
+<h2>Core Features</h2>
+<div class="features">
+<div class="card">
+<i class="fas fa-location-dot"></i>
+<h3>Live GPS Tracking</h3>
+<p>Real-time vehicle monitoring with smart positioning system.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-video"></i>
+<h3>AI Vehicle Detection</h3>
+<p>AI simulation detects abnormal risk behaviour patterns.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-brain"></i>
+<h3>AI Suggestions</h3>
+<p>System generates smart safety suggestions instantly.</p>
+</div>
+
+<div class="card">
+<i class="fas fa-shield"></i>
+<h3>Security Monitoring</h3>
+<p>Live security alert status with intelligent scoring.</p>
+</div>
+</div>
+</section>
+
+<section class="section" id="dashboardSection" style="display:none;">
+<h2>Live AI Safety Dashboard</h2>
+
+<div class="card">
+<h3>Enter Vehicle Details</h3>
+<input type="text" id="vehicleNumber" placeholder="Vehicle Number">
+<input type="text" id="driverName" placeholder="Driver Name">
+<br><br>
+<button class="btn" onclick="generateStatus()">Analyze Vehicle</button>
+
+<p id="statusResult" style="margin-top:20px;font-weight:bold;"></p>
+<p id="aiSuggestion" style="margin-top:10px;"></p>
+</div>
+</section>
+
+<div id="loginBox">
+<h3 style="color:gold;">Secure Login</h3>
+<input type="text" id="username" placeholder="Username">
+<input type="password" id="password" placeholder="Password">
+<br><br>
+<button class="btn" onclick="login()">Login</button>
+<button class="btn" onclick="closeLogin()">Close</button>
+<p id="loginMessage"></p>
+</div>
+
+<footer>
+© 2026 SafeTN | AI Transport Security Platform <br>
+Designed for Smart & Secure Mobility 🚀
+</footer>
+
+<script>
+
+function scrollToTop(){
+window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function scrollToFeatures(){
+document.getElementById("featuresSection").scrollIntoView({behavior:'smooth'});
+}
+
+function showDashboard(){
+document.getElementById("dashboardSection").style.display="block";
+document.getElementById("dashboardSection").scrollIntoView({behavior:'smooth'});
+}
+
+function showLogin(){
+document.getElementById("loginBox").style.display="block";
+}
+
+function closeLogin(){
+document.getElementById("loginBox").style.display="none";
+}
+
+function login(){
+let user=document.getElementById("username").value;
+let pass=document.getElementById("password").value;
+
+if(user==="admin" && pass==="1234"){
+document.getElementById("loginMessage").innerHTML="✅ Login Successful";
+document.getElementById("loginMessage").style.color="lightgreen";
+}
+else{
+document.getElementById("loginMessage").innerHTML="❌ Invalid Credentials";
+document.getElementById("loginMessage").style.color="red";
+}
+}
+
+function generateStatus(){
+
+let vehicle=document.getElementById("vehicleNumber").value;
+let driver=document.getElementById("driverName").value;
+
+if(vehicle==="" || driver===""){
+alert("Please enter all details");
+return;
+}
+
+let risk=Math.random();
+
+if(risk<0.5){
+document.getElementById("statusResult").innerHTML="🟢 Vehicle "+vehicle+" is SAFE.";
+document.getElementById("statusResult").style.color="lightgreen";
+document.getElementById("aiSuggestion").innerHTML="AI Suggestion: Continue monitoring. No abnormal activity detected.";
+}
+else{
+document.getElementById("statusResult").innerHTML="🔴 Risk Detected in "+vehicle+"!";
+document.getElementById("statusResult").style.color="red";
+document.getElementById("aiSuggestion").innerHTML="AI Suggestion: Immediate inspection recommended. Alert nearby authorities.";
+}
+
+}
+
+</script>
+
+</body>
+</html>
